@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pop-up</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    
+    <style type="text/css">
+        a {
+            color: #72b032;
+        }
+
+        a,
+        a:hover,
+        a:focus,
+        a:visited {
+            text-decoration: none;
+        }
+
+        .tabs-left>.nav-tabs {
+            border-bottom: 0;
+        }
+
+        .tab-content>.tab-pane {
+            display: none;
+        }
+
+        .tab-content>.active {
+            display: block;
+        }
+
+        .tabs-left>.nav-tabs>li {
+            float: none;
+        }
+
+        .tabs-left>.nav-tabs>li>a,
+        .tabs-left>.nav-tabs>li>div {
+            margin-right: 0;
+            /* margin-bottom: 3px; */
+        }
+
+        .tabs-left>.nav-tabs {
+            float: left;
+            /* margin-right: 0; */
+            border-right: 1px solid #ddd;
+
+        }
+
+        .tabs-left>.nav-tabs>li>a,
+        .tabs-left>.nav-tabs>li>div {
+            margin-right: -1px;
+            -webkit-border-radius: 4px 0 0 4px;
+            -moz-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .tabs-left>.nav-tabs>li>a:hover,
+        .tabs-left>.nav-tabs>li>a:focus,
+        .tabs-left>.nav-tabs>li>div:hover,
+        .tabs-left>.nav-tabs>li>div:focus {
+            border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+            background-color: #eeeeee;
+        }
+
+        .tabs-left>.nav-tabs .active>a,
+        .tabs-left>.nav-tabs .active>a:hover,
+        .tabs-left>.nav-tabs .active>a:focus,
+        .tabs-left>.nav-tabs .active>div,
+        .tabs-left>.nav-tabs .active>div:hover,
+        .tabs-left>.nav-tabs .active>div:focus {
+            border-color: #ddd transparent #ddd #ddd;
+            *border-right-color: #ffffff;
+        }
+
+        /** Let tabls-left class be available in bootstrap 3.3.7 - F **/
+
+        .account-type {
+            /*font-family: 'Roboto', sans-serif;*/
+            color: #a0aeb6;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 18px;
+        }
+
+        .account-amount {
+            /*font-family: 'Roboto', sans-serif;*/
+            color: #a0aeb6;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        /* TABS */
+        .tabs-left>.nav-tabs {
+            margin-right: 0px;
+            padding: 0;
+            height: 700px;
+            /* Debe ser el mismo height que el que tenga .tab-content */
+        }
+
+        /* CONTENIDO DE LOS TABS */
+        .tab-content {
+            background-color: #ffffff;
+            border: solid 1px #dce1e5;
+            border-left-style: none;
+            height: 700px;
+            /* Debe ser el mismo height que el que tenga .tabs-left > .nav-tabs */
+            padding-left: 50px;
+
+            border-radius: 0px 4px 4px 4px;
+            -moz-border-radius: 0px 4px 4px 4px;
+            -webkit-border-radius: 0px 4px 4px 4px;
+
+            -webkit-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-content>div {
+            margin-top: 26px;
+        }
+
+        /* Formato del tab activo */
+        .tabs-left>.nav-tabs .active>a,
+        .tabs-left>.nav-tabs .active>a:hover,
+        .tabs-left>.nav-tabs .active>a:focus,
+        .tabs-left>.nav-tabs .active div,
+        .tabs-left>.nav-tabs .active div:hover,
+        .tabs-left>.nav-tabs .active div:focus {
+            background-color: #ffffff;
+
+            border-bottom-style: none;
+            border-left-style: none;
+
+            /*border-bottom: 1px solid #DCE1E5;*/
+            /*border-left: 1px solid #DCE1E5;*/
+            border-bottom-left-radius: 0px;
+            border-right-style: none;
+
+            margin-right: -1px;
+
+            -webkit-box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Formato de los tabs en general */
+        .tabs-left>.nav-tabs>li:nth-child(1)>a,
+        .tabs-left>.nav-tabs>li:nth-child(1)>a:hover,
+        .tabs-left>.nav-tabs>li:nth-child(1)>a:focus,
+        .tabs-left>.nav-tabs>li:nth-child(1)>div,
+        .tabs-left>.nav-tabs>li:nth-child(1)>div:hover,
+        .tabs-left>.nav-tabs>li:nth-child(1)>div:focus {
+            cursor: pointer;
+            border-top-left-radius: 4px;
+        }
+
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>a,
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>a:hover,
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>a:focus,
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>div,
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>div:hover,
+        .tabs-left>.nav-tabs>li.active:nth-child(1)>div:focus {
+            border-top-left-radius: 4px;
+            border-bottom-style: none;
+            border-left: 1px solid #dce1e5;
+        }
+
+        .tabs-left>.nav-tabs>li>a,
+        .tabs-left>.nav-tabs>li>div {
+            display: table;
+            /*border: solid 1px transparent;*/
+            margin-right: -1px;
+
+            margin-bottom: 0;
+            padding-bottom: 0;
+
+            height: 105px;
+
+            border: solid 1px #dce1e5;
+            border-radius: 0px;
+        }
+
+        /* Style of the div element acting as tab content */
+        .tabbable.tabs-left>.nav-tabs>li>div>div {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0px 12px 0px 12px;
+
+            min-width: 105px;
+            max-width: 105px;
+
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        #MyAccountsTab li div {
+            width: 100%;
+        }
+
+        .box {
+            border: 1px solid #ececec;
+            padding-top: 5px;
+            width: 12rem;
+            height: 12rem;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            border: 1px solid #808080;
+            padding-top: 5px;
+        }
+
+        .col-md-10 {
+            height: 44rem !important;
+        }
+
+
+
+
+        /* .hei{
+  height: 15rem;
+} */
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal  fade-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" style="height: 51rem">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="height: 51rem; width: 70.2rem;">
+                <!-- <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Modal Header</h5>
+            </div> -->
+                <!-- <div class="modal-body"> -->
+
+                <!-- <div class="container" style="margin-top: 30px"> -->
+                <!-- <div class="row"> -->
+                <div id="MyAccountsTab" class="tabbable tabs-left" style="height: 50rem;width: 70rem;">
+                    <ul class="nav nav-tabs col-md-2" style="height: 40rem; background: rgb(238, 238, 238);">
+                        <li class="active" style="cursor: pointer;">
+                            <div data-target="#lA" data-toggle="tab">
+                                <div class="center">
+                                    <span class="account-type"><img src="80x70.png" alt=""></span><br />
+                                    <span class="account-amount">Rectangle</span><br />
+                                    <p>From ₹ 150</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <div data-target="#lB" data-toggle="tab">
+                                <div class="center">
+                                    <span class="account-type"><img src="30x60.png" alt=""></span><br />
+                                    <span class="account-amount">Square</span><br />
+                                    <p>From ₹ 200</p>
+                                </div>
+                            </div>
+                        </li style="cursor: pointer;">
+                        <li style="cursor: pointer;">
+                            <div data-target="#lC" data-toggle="tab">
+                                <div class="center">
+                                    <span class="account-type"><img src="40x60.png" alt=""></span><br />
+                                    <span class="account-amount">Panoramic</span><br />
+                                    <p>From ₹ 250</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <div data-target="#lD" data-toggle="tab">
+                                <div class="center">
+                                    <span class="account-type"><img src="80x70.png" alt=""></span><br />
+                                    <span class="account-amount">Custom Size</span><br />
+                                    <p>From ₹ 300</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="tab-content col-md-10 " style="overflow-y: hidden" style="height: 41.6rem">
+
+
+                        <div class="tab-pane active" id="lA" style="height: 41.6rem">
+                            <div class=" row" style="width: 48rem; height: 45rem;">
+
+                                <!-- onclick=(handler(this)) -->
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80 x 70">
+                                    <h5>80 x 70 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="30x60.png" alt=" 30 x 60">
+                                    <h5>30 x 60 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="40x60.png" alt="40 x 60">
+                                    <h5>40 x 60 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt=" 80 x 70">
+                                    <h5>80 x 70 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="30x60.png" alt="30 x 60">
+                                    <h5>30 x 60 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="40x60.png" alt="40x60">
+                                    <h5>40 x 60 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                    <h5>80 x 70 cm</h5>
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                    <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                    <div style="display: flex;">
+                                        <strike style="color: #808080; font-size: 14px;">16</strike>
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <p style="color: #ff0000">13</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="lB" style="width: 48rem; height: 45rem">
+                            <!-- <div class="row"> -->
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="30x60.png" alt="30x60">
+                                <h5>30 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40x60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="30x60.png" alt="30x60">
+                                <h5>30 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40x60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40x60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40x60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="lC" style="width: 50rem; height: 50rem">
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80 x 70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="30x60.png" alt=" 30 x 60">
+                                <h5>30 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40 x 60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt=" 80 x 70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="30x60.png" alt="30 x 60">
+                                <h5>30 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="40x60.png" alt="40x60">
+                                <h5>40 x 60 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <p style="color: #ff0000">13</p>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <hp style="color: #ff0000">13</hp>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <hp style="color: #ff0000">13</hp>
+                                </div>
+                            </div>
+
+                            <div class=" col-sm-3 center  box" onclick=(handler(this))>
+                                <img src="80x70.png" alt="80x70">
+                                <h5>80 x 70 cm</h5>
+
+                                <div style="display: flex;">
+                                    <strike style="color: #808080; font-size: 14px;">16</strike>
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <hp style="color: #ff0000">13</hp>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="lD" style="width: 50rem; height: 50rem">
+                            <div class="center ">
+                                <h3>Custom Size</h3>
+                                <form action="">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">cm</button>
+                                        <button type="button" class="btn btn-primary">inch</button>
+                                    </div>
+                                    <div class="form-group" style="margin-top: 15px;">
+                                        <label for="width" class="col-sm-3 control-label">Input width</label>
+                                        <div class="input-group col-sm-9">
+
+
+                                            <input type="text" name="width" class="form-control">
+                                            <span class="input-group-addon">cm</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="height" class="col-sm-3 control-label">Input height</label>
+                                        <div class="input-group col-sm-9">
+
+
+                                            <input type="text" name="height" class="form-control">
+                                            <span class="input-group-addon">cm</span>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" style="    margin-top: 25px;">PRICE</label>
+                                    <div class=" col-sm-9">
+
+
+                                        <label id="price" class="text-warning" style="color: #f00;">
+                                            <h5><del>$50</del></h5>
+                                        </label>
+                                        <label id="discount-price" class="text-success " style="color: #0f0;">
+                                            <h2>$30</h2>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer col-md-12">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        const handler = (e) => {
+            // console.log(e.className)
+            // console.log(e.firstChild.innerHTML)
+            var children = e.children;
+            // console.log(children)
+            const appp = children[0]
+            const aooo = children[2]
+            const price = aooo.children;
+            const pri = price[1].innerHTML
+
+            // console.log(aooo)
+            // console.log(price)
+            console.log(pri)
+            
+
+            console.log(appp.alt)
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
